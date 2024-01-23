@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>羽球比賽辨識系統專題</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1>羽球軌跡</h1>
+						<h2>羽球比賽辨識系統</h2>
+						<p>指導教授：林建華、郭珈妤<br />
+						團隊成員：黃聖筑、傅慧晴、涂冠樺、李祐宇、吳秉杰、劉恭哲、蔡易辰、邱瑛蓁</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">首頁</a></li>
+							<li><a href="information.html">資料說明</a></li>
+							<li><a href="line.html">邊線偵測</a></li>
+							<li><a href="body.html">人體節點</a></li>
+							<li class="active"><a href="trajectory.html">羽球軌跡</a></li>
+							<li><a href="who.html">擊球點與擊球方</a></li>
+							<li><a href="score.html">得分方</a></li>
+							<li><a href="completion.html">結果與結論</a></li>
+							<li><a href="refer.html">參考資料</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- all -->
+							<article class="post featured">
+								<header class="major">
+									<br /><br /><br /><br /><h2>如何獲取羽球軌跡</h2>
+									<img src="images/t1.jpg" width="900">
+								</header>
+							</article>
+
+						<!-- step1 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>生成羽球座標位置</h2>
+									<p><font size="5">利用TrackNet2生成羽球座標以及影片。</font></p>
+									<video src="video/red-01.mp4" width="400" controls></video><img src="images/t2.jpg" width="400">
+									<p><font size="4">TrackNetV2用於追蹤高速和微小的物體，例如羽球、網球等。<br>
+									其原理是利用連續3張圖片輸入給網絡，最後輸出同樣寬度*高度*3的特徵圖，分別代表三張圖片輸出結果。</font></p>
+								</header>
+							</article>
+
+						<!-- step2 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>Arima資料矯正</h2>
+									<p><font size="5">以Arima尋找因偵測錯誤的異常，並利用前後幀進行修補。</font></p>
+									<p><font size="4">修正前(左)/修正後(右)</font></p>
+									<img src="images/t3.jpg" width="400">&emsp;&emsp;&emsp;<img src="images/t4.jpg" width="400">
+									<p><font size="4">
+									ARIMA 演算法特別適用於可對應到固定時間序列的資料集。<br>
+									它的作用類似於過濾器，可將信號與雜訊分離，然後推導未來的信號以進行預測。</font></p>									
+
+								</header>
+							</article>
+
+						<!-- step3 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>MA軌跡平滑</h2>
+									<p><font size="5">利用移動平均濾波使Y軸軌跡平滑化。</font></p>
+									<img src="images/t5.jpg" width="400">&emsp;&emsp;&emsp;<img src="images/t6.jpg" width="400">
+									<p><font size="4">平滑前(左)/平滑後(右)</font></p>
+								</header>
+							</article>
+
+						<!-- step4 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>資料輸出</h2>
+									<p><font size="5">輸出CSV檔。</font></p>
+									<img src="images/t7.jpg" width="400">
+								</header>
+							</article>
+
+					</div>
+
+
+					<header id="header">
+						<a href="index.html" class="logo">回首頁</a>
+					</header>
+
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li><p>靜宜大學資料科學暨大數據分析與應用學系2024羽球辨識系統專題網頁</p></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

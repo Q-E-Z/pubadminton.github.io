@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>羽球比賽辨識系統專題</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1>結果與結論</h1>
+						<h2>羽球比賽辨識系統</h2>
+						<p>指導教授：林建華、郭珈妤<br />
+						團隊成員：黃聖筑、傅慧晴、涂冠樺、李祐宇、吳秉杰、劉恭哲、蔡易辰、邱瑛蓁</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">首頁</a></li>
+							<li><a href="information.html">資料說明</a></li>
+							<li><a href="line.html">邊線偵測</a></li>
+							<li><a href="body.html">人體節點</a></li>
+							<li><a href="trajectory.html">羽球軌跡</a></li>
+							<li><a href="who.html">擊球點與擊球方</a></li>
+							<li><a href="score.html">得分方</a></li>
+							<li class="active"><a href="completion.html">結果與結論</a></li>
+							<li><a href="refer.html">參考資料</a></li>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- 結果 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>暫放兩種按鈕展示</h2>
+						<!-- 第一種 -->			
+									<video src="video/original.mp4" width="550" controls></video><p><font size="4">範例1[原始影片]</font></p>
+									<select id="dropdown" onchange="select()">
+										<option value="">請選擇想看到的結果(點這裡選擇)</option>
+										<option value="line-01">邊線偵測</option>
+										<option value="25-01">25個人體節點</option>
+										<option value="ball-01">羽球軌跡</option>
+									</select>
+
+						<!-- 1 -->
+									<h4 id="show"></h4>
+									<video id="video" width="550" src="" controls></video>
+
+									<script type="text/javascript">
+										function select(){
+										var x = document.getElementById("dropdown").value;
+										document.getElementById("video").src="video/"+x+".mp4";
+										}
+									</script>
+						<!-- 第二種 -->
+									<video src="video/original.mp4" width="550" controls></video><p><font size="4">範例2[原始影片]</font></p>
+									<p><font size="4">請選擇想看到的結果</font></p>
+									<button onclick="choose25()">25個人體節點</button>
+									<button onclick="chooseline()">邊線偵測</button>
+									<button onclick="chooseball()">羽球軌跡</button>
+
+						<!-- 2 -->	
+
+									<h4 id="show"></h4>
+									<video id="vvideo" width="550" src="" controls></video>
+
+									<script type="text/javascript">
+										function choose25(){
+										document.getElementById("vvideo").src="video/25-01.mp4";
+										}
+										function chooseline(){
+										document.getElementById("vvideo").src="video/line-01.mp4";
+										}
+										function chooseball(){
+										document.getElementById("vvideo").src="video/red-01.mp4";
+										}
+									</script>
+
+								</header>
+							</article>
+
+						<!-- 結論 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>結論</h2>
+								</header>
+							</article>
+
+					</div>
+
+
+					<header id="header">
+						<a href="index.html" class="logo">回首頁</a>
+					</header>
+
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li><p>靜宜大學資料科學暨大數據分析與應用學系2024羽球辨識系統專題網頁</p></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
