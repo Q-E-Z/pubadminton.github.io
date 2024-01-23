@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>羽球比賽辨識系統專題</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1>擊球點與擊球方</h1>
+						<h2>羽球比賽辨識系統</h2>
+						<p>指導教授：林建華、郭珈妤<br />
+						團隊成員：黃聖筑、傅慧晴、涂冠樺、李祐宇、吳秉杰、劉恭哲、蔡易辰、邱瑛蓁</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">首頁</a></li>
+							<li><a href="information.html">資料說明</a></li>
+							<li><a href="line.html">邊線偵測</a></li>
+							<li><a href="body.html">人體節點</a></li>
+							<li><a href="trajectory.html">羽球軌跡</a></li>
+							<li class="active"><a href="who.html">擊球點與擊球方</a></li>
+							<li><a href="score.html">得分方</a></li>
+							<li><a href="completion.html">結果與結論</a></li>
+							<li><a href="refer.html">參考資料</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- 擊球點 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>擊球點</h2>
+									<p><font size="5">羽球軌跡的Y軸相對低點判斷其擊球幀。</font></p>
+									<img src="images/w1.jpg" width="850">
+								</header>
+							</article>
+
+						<!-- 擊球方 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>判斷擊球方</h2>
+									<p><font size="5">判斷資料結構及判斷準確率。</font></p>
+									<p><font size="4">
+									資料大小：2485*171。<br>
+									2485：擊球點的筆數<br>
+									171：<br>
+									1.羽球的變數（ｘ、ｙ）1*2。/2.場地（８個點）8*2。/3.人物（ｘ、ｙ、ｚ）2*3*25。/4.球跟手的距離 1*2</font></p>
+									<img src="images/w2.jpg" width="500">
+									<p><font size="4">邏輯回歸準確率最高。</font></p>
+								</header>
+							</article>
+
+
+					</div>
+
+
+
+					<header id="header">
+						<a href="index.html" class="logo">回首頁</a>
+					</header>
+
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li><p>靜宜大學資料科學暨大數據分析與應用學系2024羽球辨識系統專題網頁</p></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
