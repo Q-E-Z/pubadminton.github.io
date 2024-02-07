@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>羽球比賽辨識系統專題</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1>邊線偵測</h1><br /><br />
+						<h2>羽球比賽辨識系統</h2>
+						<p>指導教授：林建華、郭珈妤<br />
+						團隊成員：黃聖筑、傅慧晴、涂冠樺、李祐宇、吳秉杰、劉恭哲、蔡易辰、邱瑛蓁</p>
+					</div>
+
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">首頁</a></li>
+							<li><a href="information.html">研究方法</a></li>
+							<li class="active"><a href="line.html">邊線偵測</a></li>
+							<li><a href="body.html">人物節點偵測</a></li>
+							<li><a href="trajectory.html">羽球軌跡偵測</a></li>
+							<li><a href="who.html">擊球方與得分方</a></li>
+							<li><a href="completion.html">研究結論與討論</a></li>
+							<li><a href="refer.html">參考資料</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- 文獻探討 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>文獻探討</h2>
+									<h3>Canny</h3>
+									<p><font size="4" face="標楷體">
+									是一種邊緣檢測的技術，在雜訊處理與邊緣定位都有不錯的表現。其中，非極大值抑制與雙閾值的設計，是該方法最大的特點。</font></p>
+									<h3>HoughLine</h3>
+									<p><font size="4" face="標楷體">主要用於檢測圖像中的直線，在圖像中的每個點都被視為可能形成一條直線的候選點。這些候選點在一個參數空間中進行表示，對於每個點，都在參數空間中產生一條曲線，而這些曲線的交點表示可能形成直線的位置。</font></p>
+								</header>
+							</article>
+
+						<!-- 影像處理 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>影像處理</h2>
+									<p><font size="5" face="標楷體">
+									在影像處理的過程中，首先將RGB格式的圖片轉換為HSV格式，<br>
+									並透過遮罩的方式將符合綠色的區域轉換為白色，以此方式截取出羽球場地。</font></p>
+									<img src="images/l1.jpg" width="400">&emsp;&emsp;&emsp;<img src="images/l2.jpg" width="400">
+									<p><font size="4">↑RGB格式&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;↑HSV格式</font></p>
+									<img src="images/l3.jpg" width="400">&emsp;&emsp;&emsp;<img src="images/l4.jpg" width="400">
+									<p><font size="4">&emsp;↑場地遮罩&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;↑截取出羽球場地</font></p>
+								</header>
+							</article>
+
+						<!-- 邊線偵測 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>邊線偵測</h2>
+									<p><font size="5" face="標楷體">
+									邊線偵測主要是透過Canny和HoughLine的方式將線產生，由於後者的方式會產生多餘線條，因此我們利用多個自訂義函式進行篩選與刪除。</font></p>
+									<p><font size="5" face="標楷體">
+									對於行（Row）和列（Col）的處理，考慮到多條線的重合，我們首先使用分組的方式將它們的重合部分歸類為一組，然後以平均值作為標準。為了使這些線條更貼近原本的場地線，我們將上述步驟重複進行，以獲得更精確的結果，最後將其輸出，最後將其以點座標的方式供後續使用。</font></p>
+									<img src="images/l5.jpg" width="400">&emsp;&emsp;&emsp;<img src="images/l6.jpg" width="400">
+									<p><font size="4">↑ Col處理前與處理後 ↑</font></p>
+									<img src="images/l7.jpg" width="400">&emsp;&emsp;&emsp;<img src="images/l8.jpg" width="400">
+									<p><font size="4">↑ Row處理前與處理後 ↑</font></p>
+								</header>
+							</article>
+
+						<!-- 影片 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>影片偵測結果</h2>
+									<video src="video/original.mp4" width="600" controls></video>
+								<button onclick="choose01()"><p><font size="4" align='center'>觀看結果</font></p></button>
+
+									<h4 id="show"></h4>
+									<img id="vvideo" src="" width="700" loop="true" autoplay="true">
+
+									<script type="text/javascript">
+										function choose01(){
+										document.getElementById("vvideo").src="video/line-01.gif";
+										}
+									</script>
+
+
+
+					</div>
+
+
+					<header id="header">
+						<a href="body.html" class="logo">人物節點偵測</a>
+					</header>
+
+					<body style ="height:2000px;"> 
+					    <button id ="test" style ="position:fixed;right:0;bottom:0;background-color:#BBFFFF;">回頂部</button> 
+					    <script> 
+					        test.onclick =  function ( ){
+					            scrollTo( 130 , 130 );
+					        }
+					    </script> 
+					</body>
+
+					<script> 
+					var timer   =  null ;
+					box.onclick =  function (){
+					    cancelAnimationFrame(timer);
+					    timer = requestAnimationFrame( function fn(){
+					         var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+					         if (oTop >  0 ){
+					            document.body.scrollTop = document.documentElement.scrollTop = oTop -  50 ;
+					            timer = requestAnimationFrame(fn);
+					        } else {
+					            cancelAnimationFrame(timer);
+					        }    
+					    });
+					}
+					</script>
+
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li><p>靜宜大學資料科學暨大數據分析與應用學系2024羽球辨識系統專題網頁</p></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
