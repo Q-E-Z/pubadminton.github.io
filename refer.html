@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>羽球比賽辨識系統專題</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1>參考資料</h1><br /><br />
+						<h2>羽球比賽辨識系統</h2>
+						<p>指導教授：林建華、郭珈妤<br />
+						團隊成員：黃聖筑、傅慧晴、涂冠樺、李祐宇、吳秉杰、劉恭哲、蔡易辰、邱瑛蓁</p>
+					</div>
+
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">首頁</a></li>
+							<li><a href="information.html">研究方法</a></li>
+							<li><a href="line.html">邊線偵測</a></li>
+							<li><a href="body.html">人物節點偵測</a></li>
+							<li><a href="trajectory.html">羽球軌跡偵測</a></li>
+							<li><a href="who.html">擊球點與擊球方</a></li>
+							<li><a href="completion.html">研究結果與結論</a></li>
+							<li class="active"><a href="refer.html">參考資料</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- 參考資料 -->
+								<h2>英文文獻：</h2>
+									<h3>1.Tracking-tensorflow2 2021/12/16 - Chang-Chia-Chi</h3>
+									<a href="https://github.com/Chang-Chia-Chi/TrackNet-Badminton-Tracking-tensorflow2" target="_blank">網址:https://github.com/Chang-Chia-Chi/TrackNet-Badminton-Tracking-tensorflow2</a>
+									<h3>2.霍夫轉換 - OpenCV</h3>
+									<a href="https://docs.opencv.org/3.4/d9/db0/tutorial_hough_lines.html" target="_blank">網址:https://docs.opencv.org/3.4/d9/db0/tutorial_hough_lines.html</a>
+								<h2>中文文獻：</h2>
+									<h3>1.AI CUP官網 2023/03/01 - 教育部</h3>
+									<a href="https://aidea-web.tw/topic/cbea66cc-a993-4be8-933d-1aa9779001f8" target="_blank">網址:https://aidea-web.tw/topic/cbea66cc-a993-4be8-933d-1aa9779001f8</a>
+									<h3>2.資料集</h3>
+									<a href="https://drive.google.com/file/d/1h5qRYnE2scuMGIJUq2SRWW2KLol6wMyh/view" target="_blank">網址:https://drive.google.com/file/d/1h5qRYnE2scuMGIJUq2SRWW2KLol6wMyh/view</a>
+									<h3>3.Python建立時間序列預測模型 2022/03/01 - Avasla</h3>	
+									<a href="https://blog.csdn.net/WHYbeHERE/article/details/109277597" target="_blank">網址:https://blog.csdn.net/WHYbeHERE/article/details/109277597</a>
+									<h3>4.軌跡平滑 2016/11/23 – Dangkie</h3>
+									<a href="https://blog.csdn.net/Dangkie/article/details/533115162" target="_blank">網址:https://blog.csdn.net/Dangkie/article/details/53311516</a>
+									<h3>5.場地交點</h3>
+									<a href="https://blog.csdn.net/xijuezhu8128/article/details/121082445" target="_blank">網址:https://blog.csdn.net/xijuezhu8128/article/details/121082445</a>
+									<h3>6.使用 HSV 擷取特定顏色 2021/05/10 - John</h3>
+									<a href="https://hackmd.io/@Johnsonnnn/Syz1nMId_" target="_blank">網址:https://hackmd.io/@Johnsonnnn/Syz1nMId_</a>
+									<h3>7.影像的色彩轉換 – Steam教育學習網</h3>
+									<a href="https://steam.oxxostudio.tw/category/python/ai/opencv-cvtcolor.html" target="_blank">網址:https://steam.oxxostudio.tw/category/python/ai/opencv-cvtcolor.html</a>
+									<h3>8.影像遮罩 – Steam教育學習網</h3>
+									<a href="https://steam.oxxostudio.tw/category/python/ai/opencv-mask.html" target="_blank">網址:https://steam.oxxostudio.tw/category/python/ai/opencv-mask.html</a>
+									<h3>9.影像邊緣偵測 – Steam教育學習網</h3>
+									<a href="https://steam.oxxostudio.tw/category/python/ai/opencv-edge-detection.html" target="_blank">網址:https://steam.oxxostudio.tw/category/python/ai/opencv-edge-detection.html</a>
+									<h3>10.色彩轉換</h3>
+									<a href="https://steam.oxxostudio.tw/category/python/ai/opencv-cvtcolor.html" target="_blank">網址:https://steam.oxxostudio.tw/category/python/ai/opencv-cvtcolor.html</a>
+
+
+
+					</div>
+
+
+					<header id="header">
+						<a href="index.html" class="logo">回首頁</a>
+					</header>
+					<body style ="height:2000px;"> 
+					    <button id ="test" style ="position:fixed;right:0;bottom:0;background-color:#BBFFFF;">回頂部</button> 
+					    <script> 
+					        test.onclick =  function ( ){
+					            scrollTo( 130 , 130 );
+					        }
+					    </script> 
+					</body>
+
+					<script> 
+					var timer   =  null ;
+					box.onclick =  function (){
+					    cancelAnimationFrame(timer);
+					    timer = requestAnimationFrame( function fn(){
+					         var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+					         if (oTop >  0 ){
+					            document.body.scrollTop = document.documentElement.scrollTop = oTop -  50 ;
+					            timer = requestAnimationFrame(fn);
+					        } else {
+					            cancelAnimationFrame(timer);
+					        }    
+					    });
+					}
+					</script>
+
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li><p>靜宜大學資料科學暨大數據分析與應用學系2024羽球辨識系統專題網頁</p></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
