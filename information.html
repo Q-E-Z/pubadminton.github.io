@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>羽球比賽辨識系統專題</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="flow-chart.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1>研究方法</h1><br /><br />
+						<h2>羽球比賽辨識系統</h2>
+						<p>指導教授：林建華、郭珈妤<br />
+						團隊成員：黃聖筑、傅慧晴、涂冠樺、李祐宇、吳秉杰、劉恭哲、蔡易辰、邱瑛蓁</p>
+					</div>
+
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">首頁</a></li>
+							<li class="active"><a href="information.html">研究方法</a></li>
+							<li><a href="line.html">邊線偵測</a></li>
+							<li><a href="body.html">人物節點偵測</a></li>
+							<li><a href="trajectory.html">羽球軌跡偵測</a></li>
+							<li><a href="who.html">擊球點與擊球方</a></li>
+							<li><a href="completion.html">研究結果與結論</a></li>
+							<li><a href="refer.html">參考資料</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- 研究方式與流程 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>研究流程圖</h2>
+
+							<!-- 可點選式流程圖 -->
+								<div class="flow-chart">
+								  <div id="node" class="node_l" style="top: 500px; left: 50px;"><a href="data.html">蒐集資料</a></div>
+					              <div id="node" class="node_l" style="top: 300px; left: 350px;"><a href="line.html">邊線偵測</a></div>
+					              <div id="node" class="node_ll" style="top: 500px; left: 332px;"><a href="body.html">人物節點偵測</a></div>
+					              <div id="node" class="node_ll" style="top: 700px; left: 332px;"><a href="trajectory.html">羽球軌跡偵測</a></div>
+					              <div id="node" class="node_s" style="top: 400px; left: 655px;"><a href="who.html">擊球點</a></div>
+					              <div id="node" class="node_ll" style="top: 600px; left: 655px;"><a href="who.html">判斷擊球方</a></div>
+					              <div id="node" class="node_ll" style="top: 400px; left: 950px;"><a href="completion.html">判斷得分方</a></div>
+					              <div id="node" class="node_s" style="top: 600px; left: 950px;"><a href="completion.html">球路</a></div>
+
+					              <div id="line" class="line_ro" style="top: 480px; left: 215px; rotate: 90deg;"></div> <!-- 資料拆分後橫線 -->
+					              <div id="line" class="line_l" style="top: 326px; left: 263px;"></div>
+					              <div id="line" class="line_ro" style="top: 280px; left: 310px; rotate: 90deg;"></div> <!-- 邊線前橫線 -->
+					              <div id="line" class="line_ro_s" style="top: 492px; left: 296px; rotate: 90deg;"></div> <!-- 2前橫線 -->
+					              <div id="line" class="line_ro_s" style="top: 692px; left: 296px; rotate: 90deg;"></div> <!-- 3前橫線 -->
+					              
+					              <div id="line" class="line_ro" style="top: 280px; left: 510px; rotate: 90deg;"></div> <!-- 邊線後橫線 -->
+					              <div id="line" class="line_ro_s" style="top: 492px; left: 524px; rotate: 90deg;"></div> <!-- 2後橫線 -->
+					              <div id="line" class="line_ro_s" style="top: 692px; left: 524px; rotate: 90deg;"></div> <!-- 3後橫線 -->
+					              <div id="line" class="line_l" style="top: 326px; left: 557px;"></div>
+
+					              <div id="line" class="line_ro" style="top: 380px; left: 605px; rotate: 90deg;"></div> <!-- 擊球前橫線 -->
+					              <div id="line" class="line_ro" style="top: 580px; left: 605px; rotate: 90deg;"></div> <!-- 判斷前橫線 -->
+					              <div id="line" class="line_ro" style="top: 377.5px; left: 785px; rotate: 90deg;"></div> <!-- 擊球後橫線1 -->
+					              <div id="line" class="line_ro_l" style="top: 350px; left: 875px; rotate: 90deg;"></div> <!-- 擊球後橫線2 -->
+					              <div id="line" class="line_ro_l" style="top: 550px; left: 875px; rotate: 90deg;"></div> <!-- 判斷後橫線 -->
+					              <div id="line" class="line_s" style="top: 426px; left: 870px;"></div>
+								</div>	
+
+								</header>
+							</article>
+
+						<!-- 蒐集資料 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>蒐集資料</h2>
+								</header>								
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;源於Github資料集，此資料集內容包含800筆來自各類羽球賽事的打擊至得分之片段影像及其觀測之各項數據。資料集內容包含mp4、csv兩類型檔案，影像部分截自羽球各賽事中選手從打擊到得分的片段內容。
+									<header class="major">
+										<img src="images/i4.jpg" width="500">
+									</header>
+									&emsp;&emsp;而csv的部分則包含擊球當下幀數(HitFrame)、雙方球員的站位(HitterL、DefenderL)、擊球種類(BallType)是否繞頭擊球(Backhand)等多項數據。</font></p>
+									<span class="image main"><img src="images/i3.jpg" alt="" /></span>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;這樣的資料集不僅提供了視覺影像，還包括了豐富的數據，為進行羽球比賽的深入分析提供了豐富的資源。這使得使用者可以從不同角度更全面地理解每一場比賽的情境和關鍵因素。</font></p>
+							</article>
+
+					</div>
+
+
+					<header id="header">
+						<a href="line.html" class="logo">邊線偵測</a>
+					</header>
+
+					<body style ="height:2000px;"> 
+					    <button id ="test" style ="position:fixed;right:0;bottom:0;background-color:#BBFFFF;">回頂部</button> 
+					    <script> 
+					        test.onclick =  function ( ){
+					            scrollTo( 130 , 130 );
+					        }
+					    </script> 
+					</body>
+
+					<script> 
+					var timer   =  null ;
+					box.onclick =  function (){
+					    cancelAnimationFrame(timer);
+					    timer = requestAnimationFrame( function fn(){
+					         var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+					         if (oTop >  0 ){
+					            document.body.scrollTop = document.documentElement.scrollTop = oTop -  50 ;
+					            timer = requestAnimationFrame(fn);
+					        } else {
+					            cancelAnimationFrame(timer);
+					        }    
+					    });
+					}
+					</script>
+
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li><p>靜宜大學資料科學暨大數據分析與應用學系2024羽球辨識系統專題網頁</p></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

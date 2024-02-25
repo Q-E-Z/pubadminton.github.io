@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>羽球比賽辨識系統專題</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1>人物節點偵測</h1><br /><br />
+						<h2>羽球比賽辨識系統</h2>
+						<p>指導教授：林建華、郭珈妤<br />
+						團隊成員：黃聖筑、傅慧晴、涂冠樺、李祐宇、吳秉杰、劉恭哲、蔡易辰、邱瑛蓁</p>
+					</div>
+
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">首頁</a></li>
+							<li><a href="information.html">研究方法</a></li>
+							<li><a href="line.html">邊線偵測</a></li>
+							<li class="active"><a href="body.html">人物節點偵測</a></li>
+							<li><a href="trajectory.html">羽球軌跡偵測</a></li>
+							<li><a href="who.html">擊球點與擊球方</a></li>
+							<li><a href="completion.html">研究結果與結論</a></li>
+							<li><a href="refer.html">參考資料</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+
+						<!-- 人物節點偵測 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>人物節點偵測</h2>
+								</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;為了抓取人物座標，以Github所提供OpenPose執行檔，輸入影像即可獲取含有人物節點之json檔。將json檔切割出首幀選手座標範圍，再將每個節點獨立整理成list檔，為了維持資料的可用性，再以KNN進行補值，<br>
+									</font></p>
+									<header class="major">									
+										<img src="images/b1.jpg" width="350">
+										<p><font size="4">↑ 人物各節點座標</font></p>
+									</header>									
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;利用Arima來檢查各點的運動軌跡，避免因偵測錯誤而導致座標誤差太大而造成的運動軌跡不連貫，因此我們以Arima進行偵測將軌跡異常的幀數歸零，並將其進行輸出。</font></p>
+									<header class="major">
+										<img src="images/b2.jpg" width="700">
+										<p><font size="4">↑ Arima檢查軌跡</font></p>
+									</header>
+							</article>
+
+						<!-- 文獻探討 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>方法介紹</h2>
+									<h3>OpenPose</h3>
+								</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;這方法能夠從圖像或視訊中檢測和估計人體的關鍵點和姿勢。這些關鍵點包括頭部、肩膀、手肘、手腕、髋部、膝蓋和腳踝等部位。OpenPose使用深度學習的技術，基於卷積神經網絡（CNN）的架構來進行人體姿勢估測。它能夠處理多人、多關節的情況，同時檢測人體的姿勢和手部的動作。</font></p>
+							</article>							
+
+						<!-- 影片 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>影片偵測結果</h2>
+									<video src="video/original.mp4" width="600" controls></video>
+								<button onclick="choose01()"><p><font size="4" align='center'>觀看結果</font></p></button>
+
+									<h4 id="show"></h4>
+									<img id="vvideo" src="" width="700" loop="true" autoplay="true">
+
+									<script type="text/javascript">
+										function choose01(){
+										document.getElementById("vvideo").src="video/body-01.gif";
+										}
+									</script>
+
+
+					</div>
+
+
+					<header id="header">
+						<a href="trajectory.html" class="logo">羽球軌跡偵測</a>
+					</header>
+
+					<body style ="height:2000px;"> 
+					    <button id ="test" style ="position:fixed;right:0;bottom:0;background-color:#BBFFFF;">回頂部</button> 
+					    <script> 
+					        test.onclick =  function ( ){
+					            scrollTo( 130 , 130 );
+					        }
+					    </script> 
+					</body>
+
+					<script> 
+					var timer   =  null ;
+					box.onclick =  function (){
+					    cancelAnimationFrame(timer);
+					    timer = requestAnimationFrame( function fn(){
+					         var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+					         if (oTop >  0 ){
+					            document.body.scrollTop = document.documentElement.scrollTop = oTop -  50 ;
+					            timer = requestAnimationFrame(fn);
+					        } else {
+					            cancelAnimationFrame(timer);
+					        }    
+					    });
+					}
+					</script>
+
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li><p>靜宜大學資料科學暨大數據分析與應用學系2024羽球辨識系統專題網頁</p></li></ul>
+					</div>
+
+			</div>
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
