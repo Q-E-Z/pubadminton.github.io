@@ -1,0 +1,574 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>羽球比賽辨識系統專題</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="flow-chart.css" />
+		<link rel="stylesheet" href="tabulate.css" />
+		<link rel="stylesheet" href="test1.css">
+
+	</head>
+	<body class="is-preload">
+
+						<!-- Nav -->
+						<div class="test1">
+						<header class="header_content">
+		    			<nav class="navbar">
+				        <ul class="nav_item">
+				        	<li style="list-style-type: none;"><a href="#information">流程圖</a></li>
+				            <li style="list-style-type: none;"><a href="#information2">蒐集資料</a></li>
+				            <li style="list-style-type: none;"><a href="#linepage">邊線偵測</a></li>
+				            <li style="list-style-type: none;"><a href="#body">人物節點偵測</a></li>
+				            <li style="list-style-type: none;"><a href="#trajectory">羽球軌跡偵測</a></li>
+				            <li style="list-style-type: none;"><a href="#who">擊球點</a></li>
+				            <li style="list-style-type: none;"><a href="#who2">判斷擊球方</a></li>
+				            <li style="list-style-type: none;"><a href="#completion">判斷得分方</a></li>
+				            <li style="list-style-type: none;"><a href="#completion2">軌跡</a></li>
+				        </ul>
+				    </nav>
+				</header>
+				</div>
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+
+					<div id="intro">
+						<img src="images/school.jpg" width="900"><br />
+						<h1>羽球比賽辨識系統</h1>
+						<p>指導教授：林建華、郭珈妤<br />
+						團隊成員：黃聖筑、傅慧晴、涂冠樺、李祐宇、吳秉杰、劉恭哲、蔡易辰、邱瑛蓁</p>
+
+					</div>
+
+
+
+			<!-- index -->
+				<div id="index">
+					<div id="main">
+						
+
+						<!-- 摘要 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>摘要</h2>
+								</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;本專題旨在利用AI技術，針對羽球比賽中的各項數據進行分析。<br />
+									&emsp;&emsp;首先，使用TrackNetV2對影像中的羽球進行初步偵測，以獲取每一幀的羽球變化。接著，利用OpenPose技術對選手進行人體關節偵測，這些資訊有助於進一步分析比賽中選手的動作和技術。另外，考慮到場地線在羽球比賽中的重要性，採用遮罩技術來識別場地線，並利用Canny和HoughLine演算法將其以函數的形式呈現出來。<br />
+									&emsp;&emsp;這項研究的結果將對羽球比賽的表現分析提供有價值的洞察，有助於教練和選手了解其表現的強項和改進的空間。同時，這些分析也可以應用於訓練和教學中，提高教學專業水準，幫助培養更優秀的選手。這項研究對於羽球運動的發展和提高競技水準都具有積極的意義。</font></p>
+							</article>
+
+						<!-- 動機與目標 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>動機與目標</h2>
+								</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;隨著羽球運動的逐漸興起，我們希望可以透過一個簡易且便利性高的方式，讓大眾可以去用另一個視角觀看羽球賽事，甚至透過這個平台去學習和進行技術研究。因此，我們決定創建一個針對羽球比賽進行分析的網頁，以提供一個新穎的視角去觀看羽球賽事。<br />
+									&emsp;&emsp;我們的目標是建立一個直觀且便利的網頁，讓使用者能夠用不同的方式觀看賽事，且可以從網頁中看出賽事中的羽球球路及得分方，並得知人物及羽球的移動軌跡，從而更迅速地理解比賽。</font></p>
+							</article>
+					</div>
+									<hr style="border-width:10px;">
+				</div>
+
+			<!-- information -->
+				<div id="information">
+						<div id="main">
+
+						<!-- 研究方式與流程 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>研究流程圖</h2>
+
+							<!-- 可點選式流程圖 -->
+								<div class="flow-chart">
+								  <div id="node" class="node_l" style="top: 500px; left: 50px;"><a href="#information2">蒐集資料</a></div>
+					              <div id="node" class="node_l" style="top: 300px; left: 335px;"><a href="#linepage">邊線偵測</a></div>
+					              <div id="node" class="node_ll" style="top: 500px; left: 317px;"><a href="#body">人物節點偵測</a></div>
+					              <div id="node" class="node_ll" style="top: 700px; left: 317px;"><a href="#trajectory">羽球軌跡偵測</a></div>
+					              <div id="node" class="node_s" style="top: 400px; left: 624px;"><a href="#who">擊球點</a></div>
+					              <div id="node" class="node_ll" style="top: 600px; left: 624px;"><a href="#who2">判斷擊球方</a></div>
+					              <div id="node" class="node_ll" style="top: 400px; left: 920px;"><a href="#completion">判斷得分方</a></div>
+					              <div id="node" class="node_s" style="top: 600px; left: 920px;"><a href="#completion2">軌跡</a></div>
+
+					              <div id="line" class="line_ro" style="top: 480px; left: 210px; rotate: 90deg;"></div> <!-- 資料拆分後橫線 -->
+					              <div id="line" class="line_l" style="top: 321px; left: 253px;"></div>
+					              <div id="line" class="line_ro" style="top: 280px; left: 295px; rotate: 90deg;"></div> <!-- 邊線前橫線 -->
+					              <div id="line" class="line_ro_s" style="top: 492px; left: 285px; rotate: 90deg;"></div> <!-- 2前橫線 -->
+					              <div id="line" class="line_ro_s" style="top: 692px; left: 285px; rotate: 90deg;"></div> <!-- 3前橫線 -->
+					              
+					              <div id="line" class="line_ro" style="top: 280px; left: 493px; rotate: 90deg;"></div> <!-- 邊線後橫線 -->
+					              <div id="line" class="line_ro_s" style="top: 492px; left: 504px; rotate: 90deg;"></div> <!-- 2後橫線 -->
+					              <div id="line" class="line_ro_s" style="top: 692px; left: 504px; rotate: 90deg;"></div> <!-- 3後橫線 -->
+					              <div id="line" class="line_l" style="top: 321px; left: 536px;"></div>
+
+					              <div id="line" class="line_ro" style="top: 380px; left: 580px; rotate: 90deg;"></div> <!-- 擊球前橫線 -->
+					              <div id="line" class="line_ro" style="top: 580px; left: 580px; rotate: 90deg;"></div> <!-- 判斷前橫線 -->
+					              <div id="line" class="line_ro" style="top: 377.5px; left: 748px; rotate: 90deg;"></div> <!-- 擊球後橫線1 -->
+					              <div id="line" class="line_ro_l" style="top: 350px; left: 850px; rotate: 90deg;"></div> <!-- 擊球後橫線2 -->
+					              <div id="line" class="line_ro_l" style="top: 550px; left: 850px; rotate: 90deg;"></div> <!-- 判斷後橫線 -->
+					              <div id="line" class="line_s" style="top: 417px; left: 850px;"></div>
+								</div>	
+
+								</header>
+							</article>
+						</div>
+						<!-- 蒐集資料 -->
+				<div id="information2">
+					<div id="main">
+							<article class="post featured">
+								<header class="major">
+									<h2>資料集</h2>
+								</header>								
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;本研究之資料集取自TrackNetV2及ShuttleSet。</br>
+									&emsp;&emsp;每筆資料皆是一場從發球到得分的BWF羽球賽事的單打比賽，且資料中附有一個影片紀錄檔，記錄檔中有針對賽事的各項變數描述，詳見下方數據集介紹。</font></p>
+
+								<header class="major">
+									<h2>數據集</h2>
+								</header>								
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;在資料集中所提供的影片紀錄檔中包含以下變數:</font></p>
+									<div class="tabulate">
+									<table>
+									  <tr>
+									    <th>變數名稱</th>
+									    <td>HitFrame</td>
+									    <td>HitterL、DefenderL</td>
+									    <td>BallType</td>
+									    <td>Backhand</td>
+									  </tr>
+									  <tr>
+									    <th>說明</th>
+									    <td>當下幀數</td>
+									    <td>雙方球員的站位</td>
+									    <td>擊球種類</td>
+									    <td>是否繞頭擊球</td>
+									  </tr>
+									</table>
+
+									</div>
+									<span class="image main"><img src="images/i3.jpg" alt="" /></span>
+
+								<header class="major">
+									<h2>影片</h2>
+								</header>								
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;此為BWF羽球賽事的單打比賽影片，且每個影片都是記錄從發球到落地的擊球過程。</font></p>
+									<header class="major">
+										<video src="video/original.mp4" width="600" controls></video>
+									</header>
+							</article>
+						<center><a href="#information" class="logo" style="width:300px;height:100px;font-size:30px;border:2px #FF9966 dashed;background-color:#CCFFCC;">返回研究流程圖選取</a></center>
+					</div>
+									<hr style="border-width:10px;">
+				</div>
+
+
+			<!-- line -->
+				<div id="linepage">
+					<div id="main">
+
+						<!-- 影像處理 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>邊線偵測-截取羽球場地</h2>
+								</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;在影像處理的過程中，首先將RGB格式的圖片轉換為HSV格式，並透過遮罩的方式將符合綠色的區域轉換為白色，以此方式截取出羽球場地。</font></p>
+									<header class="major">
+										<img src="images/l1.jpg" width="400">&emsp;&emsp;&emsp;<img src="images/l2.jpg" width="400">
+										<p><font size="4">↑RGB格式&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;↑HSV格式</font></p>
+										<img src="images/l3.jpg" width="400">&emsp;&emsp;&emsp;<img src="images/l4.jpg" width="400">
+										<p><font size="4">&emsp;↑場地遮罩&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;↑截取出羽球場地</font></p>
+									<header class="major">
+							</article>
+
+						<!-- 邊線偵測 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>邊線偵測</h2>
+								</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;邊線偵測主要是透過Canny和HoughLine的方式將線產生，由於後者的方式會產生多餘線條，因此我們利用多個自訂義函式進行篩選與刪除。</font></p>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;對於行（Row）和列（Col）的處理，考慮到多條線的重合，我們首先使用分組的方式將它們的重合部分歸類為一組，然後以平均值作為標準。為了使這些線條更貼近原本的場地線，我們將上述步驟重複進行，以獲得更精確的結果，最後將其輸出，最後將其以點座標的方式供後續使用。</font></p>
+									<header class="major">
+										<img src="images/l5.jpg" width="400">&emsp;&emsp;&emsp;<img src="images/l6.jpg" width="400">
+										<p><font size="4">↑ Col處理前與處理後 ↑</font></p>
+										<img src="images/l7.jpg" width="400">&emsp;&emsp;&emsp;<img src="images/l8.jpg" width="400">
+										<p><font size="4">↑ Row處理前與處理後 ↑</font></p>
+									</header>
+							</article>
+
+						<!-- 方法介紹 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>方法介紹</h2>
+									<h3>1.Canny</h3>
+								</header>									
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;是一種邊緣檢測的技術，在雜訊處理與邊緣定位都有不錯的表現。其中，非極大值抑制與雙閾值的設計，是該方法最大的特點。</font></p>
+								<br>
+								<header class="major">	
+									<h3>2.HoughLine</h3>
+								</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;主要用於檢測圖像中的直線，在圖像中的每個點都被視為可能形成一條直線的候選點。這些候選點在一個參數空間中進行表示，對於每個點，都在參數空間中產生一條曲線，而這些曲線的交點表示可能形成直線的位置。</font></p>
+							</article>						
+
+						<!-- 影片 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>影片偵測結果</h2>
+									<video src="video/original.mp4" width="600" controls></video>
+									<button onclick="choose01()"><p><font size="4" align='center'>觀看結果</font></p></button>
+								</header>
+
+									<h4 id="show"></h4>
+									<img id="video" src="" width="700" loop="true" autoplay="true">
+
+									<script type="text/javascript">
+										function choose01(){
+										document.getElementById("video").src="video/line-01.gif";
+										}
+									</script>
+
+						<center><a href="#information" class="logo" style="width:300px;height:100px;font-size:30px;border:2px #FF9966 dashed;background-color:#CCFFCC;">返回研究流程圖選取</a></center>
+
+					</div>
+									<hr style="border-width:10px;">
+				</div>
+
+
+			<!-- body -->
+				<div id="body">
+					<div id="main">
+
+
+						<!-- 人物節點偵測 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>人物節點偵測(原)</h2>
+								</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;為了抓取人物座標，以Github所提供OpenPose執行檔，輸入影像即可獲取含有人物節點之json檔。將json檔切割出首幀選手座標範圍，再將每個節點獨立整理成list檔，為了維持資料的可用性，再以KNN進行補值，<br>
+									</font></p>
+									<header class="major">									
+										<img src="images/b1.jpg" width="350">
+										<p><font size="4">↑ 人物各節點座標</font></p>
+									</header>									
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;利用Arima來檢查各點的運動軌跡，避免因偵測錯誤而導致座標誤差太大而造成的運動軌跡不連貫，因此我們以Arima進行偵測將軌跡異常的幀數歸零，並將其進行輸出。</font></p>
+									<header class="major">
+										<img src="images/b2.jpg" width="700">
+										<p><font size="4">↑ Arima檢查軌跡</font></p>
+									</header>
+							</article>
+
+							<article class="post featured">
+								<header class="major">
+									<h2>人物節點偵測(改)</h2>
+								</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;使用CMU - Panoptic Studio (卡內基·梅隆大學的研究單位)在github所提供的openpose執行檔，輸出影片中所有人的25個身體節點json檔，其執行檔的安裝流程和使用方式均有放置在github上，只要將影片輸入，其可輸出畫上人體節點檔的影片，及含有25人物節點的json檔，而我們僅需要人體節點的數據檔，因此僅輸出json檔。</font></p>
+									<header class="major">									
+										<img src="images/b3.jpg" width="175">&emsp;&emsp;<img src="video/body-02.gif" width="600" loop="true" autoplay="true">
+										<p><font size="4">↑ 25個身體節點&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;↑ 人體節點檔的影片</font></p>
+									</header>									
+							</article>
+
+						<!-- 文獻探討 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>方法介紹</h2>
+									<h3>OpenPose</h3>
+								</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;這方法能夠從圖像或視訊中檢測和估計人體的關鍵點和姿勢。這些關鍵點包括頭部、肩膀、手肘、手腕、髋部、膝蓋和腳踝等部位。OpenPose使用深度學習的技術，基於卷積神經網絡（CNN）的架構來進行人體姿勢估測。它能夠處理多人、多關節的情況，同時檢測人體的姿勢和手部的動作。</font></p>
+							</article>							
+
+						<!-- 影片 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>影片偵測結果</h2>
+									<video src="video/original.mp4" width="600" controls></video>
+								<button onclick="choose02()"><p><font size="4" align='center'>觀看結果</font></p></button>
+
+									<h4 id="show"></h4>
+									<img id="vvideo" src="" width="700" loop="true" autoplay="true">
+
+									<script type="text/javascript">
+										function choose02(){
+										document.getElementById("vvideo").src="video/body-01.gif";
+										}
+									</script>
+						<center><a href="#information" class="logo" style="width:300px;height:100px;font-size:30px;border:2px #FF9966 dashed;background-color:#CCFFCC;">返回研究流程圖選取</a></center>
+					</div>
+									<hr style="border-width:10px;">
+				</div>
+
+
+			<!-- trajectory -->
+				<div id="trajectory">
+					<div id="main">
+
+
+						<!-- 羽球軌跡偵測 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>羽球軌跡偵測</h2>
+								</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;利用TrackNetV2輸入影像即可連續生成初步羽球X、Y座標位置。</font></p>
+								<header class="major">
+									<img src="images/t2.jpg" width="400">
+									<p><font size="4">↑ 羽球軌跡座標</font></p>
+								</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;為避免偵測錯誤而導致的軌跡異常或資料缺失，利用Arima去尋找軌跡的異常點，對於上述異常點，我們以前後時間的座標位置將軌及補齊。</font></p>
+								<header class="major">
+									<img src="images/t3.jpg" width="400">&emsp;&emsp;&emsp;<img src="images/t4.jpg" width="400">
+									<p><font size="4">↑ Arima檢查軌跡前後 ↑</font></p>
+								</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;由於數據本身可能存在微小誤差，可能導致後續數據分析的變動，因此我們對軌跡中的Y軸座標進行移動平均濾波，以實現軌跡的平滑化。同時，利用矯正後的軌跡找出Y軸相對低點，以判定可能的擊球時間。</font></p>
+								<header class="major">								
+									<img src="images/t5.jpg" width="400">&emsp;&emsp;&emsp;<img src="images/t6.jpg" width="400">
+									<p><font size="4">↑ 軌跡平滑處理前後 ↑</font></p>		
+								</header>
+							</article>
+
+						<!-- 文獻探討 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>方法介紹</h2>
+								</header>
+									<h3>Track&emsp;Net&emsp;V2</h3>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;連續三張圖片輸入到網絡，最後輸出width x height x 3的特徵圖，分別對應三張圖片的輸出結果。每張影像的每個像素點均輸出一個機率值，透過閾值產生0-1 heatmap，其中值為1的像素點被認為存在ball，值為0的像素點被認為是背景。 值1的像素點會聚集成一個或多個成團的區域，最大面積的區域就是我們要的結果，中心點座標就是最終ball的座標。</font></p>
+									<img src="images/t1.jpg" width="650">
+							</article>
+
+
+						<!-- 影片 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>影片偵測結果</h2>
+									<video src="video/original.mp4" width="600" controls></video>
+								<button onclick="choose03()"><p><font size="4" align='center'>觀看結果</font></p></button>
+
+									<h4 id="show"></h4>
+									<img id="vvvideo" src="" width="700" loop="true" autoplay="true">
+
+									<script type="text/javascript">
+										function choose03(){
+										document.getElementById("vvvideo").src="video/ball-01.gif";
+										}
+									</script>
+						<center><a href="#information" class="logo" style="width:300px;height:100px;font-size:30px;border:2px #FF9966 dashed;background-color:#CCFFCC;">返回研究流程圖選取</a></center>
+					</div>
+									<hr style="border-width:10px;">
+				</div>
+
+
+			<!-- who -->
+				<div id="who">
+					<div id="main">
+						<!-- 擊球點 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>擊球點</h2>
+								</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;利用平滑化後矯正的軌跡找出Y軸相對低點，以判定可能的擊球時間。</font></p>
+								<header class="major">
+									<img src="images/w5.jpg" width="600">
+								</header>
+
+					</div>
+
+				
+						<!-- 擊球方 -->
+				<div id="who2">
+					<div id="main">
+							<article class="post featured">
+								<header class="major">
+									<h2>判斷擊球方</h2>
+								</header>								
+								<p><font size="5" face="標楷體">
+									&emsp;&emsp;我們利用已得到的所有擊球幀，共2485筆資料，與羽球之座標、場地、人物、球與手的距離、擊球方共171項變數，<br>
+									&emsp;&emsp;並分別以Perceptron(感知器)、Logistic Regression(邏輯斯回歸)、SVM(支援向量機)、Decision Tree(決策樹)、Random decision forests(隨機森林)、XGBoost等6項分類器進行訓練。<br>
+									訓練結果如下：
+								</font></p>
+
+								<div class="tabulate">
+									<table>
+									  <tr>
+									    <th>分類器</th>
+									    <td>測試集準確率</td>
+									  </tr>
+									  <tr>
+									    <th>Perceptron</th>
+									    <td>0.88</td>
+									  </tr>
+									  <tr>
+									    <th>Logistic Regression</th>
+									    <td>0.96</td>
+									  </tr>
+									  <tr>
+									    <th>SVM</th>
+									    <td>0.94</td>
+									  </tr>
+									  <tr>
+									    <th>Decision Tree</th>
+									    <td>0.86</td>
+									  </tr>
+									  <tr>
+									    <th>Random Decision Forests</th>
+									    <td>0.88</td>
+									  </tr>
+									  <tr>
+									    <th>XGBoost</th>
+									    <td>0.82</td>
+									  </tr>
+									</table>
+									</div>
+
+								<p><font size="5" face="標楷體">
+								&emsp;&emsp;測試結果準確率以”邏輯斯回歸”(Logistic Regression)最高。</font></p>
+
+							</article>
+						<center><a href="#information" class="logo" style="width:300px;height:100px;font-size:30px;border:2px #FF9966 dashed;background-color:#CCFFCC;">返回研究流程圖選取</a></center>
+					</div>
+									<hr style="border-width:10px;">
+				</div>
+
+
+			<!-- completion -->
+				<div id="completion">
+					<div id="main">
+						<!-- 研究結果 -->
+							<article class="post featured">
+								<header class="major">
+									<h1>研究結果-得分方與軌跡</h1>
+								</header>						
+
+						<!-- 得分方 -->
+							<article class="post featured">
+									<p><font size="7" ><center><strong>得分方</strong></center></font></p>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;我們判斷得分方的方式，先將球路分為兩種類型，再依照斜率做下一步判斷，<br>
+									&emsp;&emsp;若如球路一的情況，在球路原路徑偏離超過10度時，我們將其判斷已落地，並進而確認是否出界，</font></p>
+									<header class="major">
+										<img src="images/w1.jpg" width="400">&emsp;&emsp;&emsp;<img src="images/w2.jpg" width="330">
+										<p><font size="4">↑ 球路一&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;↑ 示意圖</font></p>
+										<p><font size="5" face="標楷體">
+									</header>
+									&emsp;&emsp;若如球路二的情況，當球路角度連續小於20度，並且之後角度出現大幅變動時則判斷已落地，並進而確認是否出界。</font></p>
+									<header class="major">
+										<img src="images/w3.jpg" width="400">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="images/w4.jpg" width="130">
+										<p><font size="4">↑ 球路二&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;        示意圖 ↑</font></p>
+									</header>
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;全資料共234筆資料，其中符合路徑一共60部影片，準確率為0.76，符合路路徑二共174個影片，準確率為0.76，因而此判斷方式準確率為0.76。</font></p>
+							</article>
+							<br>
+
+					</div>
+
+						<!-- 球路(軌跡) -->
+				<div id="completion2">
+					<div id="main">
+							<article class="post featured">
+									<p><font size="7" ><center><strong>軌跡</strong></center></font></p>
+
+
+							</article>
+
+						<!-- 研究結論 -->
+							<article class="post featured">
+								<header class="major">
+									<h2>研究結論</h2>
+								</header>								
+									<p><font size="5" face="標楷體">
+									&emsp;&emsp;在我們的專題中，我們主要利用OpenPose、TracknetV2以及Canny等方法進行初始的資料生成。接著，我們使用Arima和KNN的方式進行檢查，以獲得更接近正確軌跡的數據。在擊球的幀數判斷中，我們以軌跡Y軸的相對低點作為判斷依據。對於擊球方，我們則採用訓練邏輯回歸模型，以獲得高精確度的判斷。至於得分方，我們則根據球路角度變化和場地的劃分，進行判斷落地與出界，使得判斷的準確率達到約80%。</font></p>
+							</article>
+						<center><a href="#information" class="logo" style="width:300px;height:100px;font-size:30px;border:2px #FF9966 dashed;background-color:#CCFFCC;">返回研究流程圖選取</a></center>
+					</div>
+									<hr style="border-width:10px;">
+				</div>
+
+
+			<!-- refer -->
+				<div id="refer">
+					<div id="main">
+
+						<!-- 參考資料 -->
+							<header class="major">
+									<h1>參考資料</h1>
+								</header>
+								<h2>英文文獻：</h2>
+									<h3>1.Tracking-tensorflow2 2021/12/16 - Chang-Chia-Chi</h3>
+									<a href="https://github.com/Chang-Chia-Chi/TrackNet-Badminton-Tracking-tensorflow2" target="_blank">網址:https://github.com/Chang-Chia-Chi/TrackNet-Badminton-Tracking-tensorflow2</a>
+									<h3>2.霍夫轉換 - OpenCV</h3>
+									<a href="https://docs.opencv.org/3.4/d9/db0/tutorial_hough_lines.html" target="_blank">網址:https://docs.opencv.org/3.4/d9/db0/tutorial_hough_lines.html</a>
+								<h2>中文文獻：</h2>
+									<h3>1.AI CUP官網 2023/03/01 - 教育部</h3>
+									<a href="https://aidea-web.tw/topic/cbea66cc-a993-4be8-933d-1aa9779001f8" target="_blank">網址:https://aidea-web.tw/topic/cbea66cc-a993-4be8-933d-1aa9779001f8</a>
+									<h3>2.資料集</h3>
+									<a href="https://drive.google.com/file/d/1h5qRYnE2scuMGIJUq2SRWW2KLol6wMyh/view" target="_blank">網址:https://drive.google.com/file/d/1h5qRYnE2scuMGIJUq2SRWW2KLol6wMyh/view</a>
+									<h3>3.Python建立時間序列預測模型 2022/03/01 - Avasla</h3>	
+									<a href="https://blog.csdn.net/WHYbeHERE/article/details/109277597" target="_blank">網址:https://blog.csdn.net/WHYbeHERE/article/details/109277597</a>
+									<h3>4.軌跡平滑 2016/11/23 – Dangkie</h3>
+									<a href="https://blog.csdn.net/Dangkie/article/details/533115162" target="_blank">網址:https://blog.csdn.net/Dangkie/article/details/53311516</a>
+									<h3>5.場地交點</h3>
+									<a href="https://blog.csdn.net/xijuezhu8128/article/details/121082445" target="_blank">網址:https://blog.csdn.net/xijuezhu8128/article/details/121082445</a>
+									<h3>6.使用 HSV 擷取特定顏色 2021/05/10 - John</h3>
+									<a href="https://hackmd.io/@Johnsonnnn/Syz1nMId_" target="_blank">網址:https://hackmd.io/@Johnsonnnn/Syz1nMId_</a>
+									<h3>7.影像的色彩轉換 – Steam教育學習網</h3>
+									<a href="https://steam.oxxostudio.tw/category/python/ai/opencv-cvtcolor.html" target="_blank">網址:https://steam.oxxostudio.tw/category/python/ai/opencv-cvtcolor.html</a>
+									<h3>8.影像遮罩 – Steam教育學習網</h3>
+									<a href="https://steam.oxxostudio.tw/category/python/ai/opencv-mask.html" target="_blank">網址:https://steam.oxxostudio.tw/category/python/ai/opencv-mask.html</a>
+									<h3>9.影像邊緣偵測 – Steam教育學習網</h3>
+									<a href="https://steam.oxxostudio.tw/category/python/ai/opencv-edge-detection.html" target="_blank">網址:https://steam.oxxostudio.tw/category/python/ai/opencv-edge-detection.html</a>
+									<h3>10.色彩轉換</h3>
+									<a href="https://steam.oxxostudio.tw/category/python/ai/opencv-cvtcolor.html" target="_blank">網址:https://steam.oxxostudio.tw/category/python/ai/opencv-cvtcolor.html</a>
+								<h2>網頁模板：</h2>
+									<h3>1.Massively – html5up</h3>
+									<a href="https://html5up.net/massively" target="_blank">網址:https://html5up.net/massively</a>
+
+					</div>
+
+				</div>
+
+
+
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li><p>靜宜大學資料科學暨大數據分析與應用學系2024羽球辨識系統專題網頁</p></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+
+  		 
+
+</html>
